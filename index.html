@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flourax | Ultra Premium Experience</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#0a0a0d;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* NAV */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(15px);
+z-index:999;
+}
+
+nav img{
+height:50px;
+}
+
+nav ul{
+display:flex;
+gap:35px;
+list-style:none;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:500;
+transition:0.4s;
+}
+
+nav a:hover{
+color:#d4af37;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:radial-gradient(circle at center,#121212 0%,#000 80%);
+}
+
+.hero h1{
+font-size:70px;
+font-family:'Playfair Display',serif;
+background:linear-gradient(45deg,#d4af37,#ffffff,#d4af37);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero p{
+margin-top:20px;
+font-size:20px;
+opacity:0.8;
+}
+
+/* SECTIONS */
+
+.section{
+padding:120px 80px;
+text-align:center;
+}
+
+.section h2{
+font-size:45px;
+margin-bottom:40px;
+font-family:'Playfair Display',serif;
+}
+
+/* ABOUT */
+
+.about p{
+max-width:800px;
+margin:auto;
+opacity:0.8;
+}
+
+/* TEAM */
+
+.team{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+margin-top:50px;
+}
+
+.member{
+background:#111;
+padding:30px;
+border-radius:20px;
+transition:0.6s;
+}
+
+.member:hover{
+transform:translateY(-10px);
+box-shadow:0 15px 40px rgba(212,175,55,0.3);
+}
+
+/* LOGIN / SIGNUP */
+
+.auth{
+background:#111;
+padding:40px;
+border-radius:20px;
+max-width:500px;
+margin:40px auto;
+}
+
+.auth input, .auth select{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+background:#1a1a1a;
+color:white;
+}
+
+.auth button{
+padding:12px 30px;
+background:linear-gradient(45deg,#d4af37,#a67c00);
+border:none;
+border-radius:30px;
+cursor:pointer;
+font-weight:bold;
+margin-top:10px;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+display:none;
+padding:100px 50px;
+}
+
+.chat-box{
+background:#111;
+padding:20px;
+border-radius:20px;
+margin-top:20px;
+height:300px;
+overflow-y:auto;
+text-align:left;
+}
+
+.chat-input{
+display:flex;
+margin-top:10px;
+}
+
+.chat-input input{
+flex:1;
+padding:10px;
+border:none;
+border-radius:10px 0 0 10px;
+background:#1a1a1a;
+color:white;
+}
+
+.chat-input button{
+padding:10px 20px;
+border:none;
+background:#d4af37;
+border-radius:0 10px 10px 0;
+cursor:pointer;
+}
+
+/* CONTACT */
+
+.contact{
+padding:100px 50px;
+text-align:center;
+background:#0a0a0a;
+}
+
+footer{
+text-align:center;
+padding:30px;
+background:#000;
+opacity:0.7;
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+<img src="logo.png">
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#auth">Login</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+<h1>FLOURAX</h1>
+<p>Ultra Cinematic Home Décor & RGB Lighting Empire</p>
+</section>
+
+<section class="section about" id="about">
+<h2>About Flourax</h2>
+<p>
+Flourax is a premium home décor and lighting brand delivering bold RGB innovation,
+designer frames, luxury vases and modern ambient lighting solutions.
+We blend technology with aesthetics to create unforgettable atmospheres.
+</p>
+
+<div class="team">
+<div class="member">
+<h3>Founder</h3>
+<p>Siddhant Lamsal</p>
+</div>
+<div class="member">
+<h3>Co-Founder</h3>
+<p>Strategic Vision Partner</p>
+</div>
+<div class="member">
+<h3>Staffs</h3>
+<p>Creative Designers • Lighting Experts • Customer Specialists</p>
+</div>
+</div>
+</section>
+
+<section class="section" id="auth">
+<h2>Login / Signup</h2>
+
+<div class="auth">
+<input type="text" id="username" placeholder="Enter Username">
+<select id="role">
+<option value="customer">Customer</option>
+<option value="seller">Seller</option>
+</select>
+<button onclick="login()">Enter Dashboard</button>
+</div>
+</section>
+
+<section class="dashboard" id="dashboard">
+<h2 id="dashTitle"></h2>
+
+<div id="interface"></div>
+
+<div class="chat-box" id="chatBox"></div>
+
+<div class="chat-input">
+<input type="text" id="chatInput" placeholder="Type message...">
+<button onclick="sendMessage()">Send</button>
+</div>
+</section>
+
+<section class="contact" id="contact">
+<h2>Contact Us</h2>
+<p>Email: siddhantlamsal85@gmail.com</p>
+<p>Phone: 9847477499</p>
+</section>
+
+<footer>
+© 2026 Flourax | Ultra Premium Digital Experience
+</footer>
+
+<script>
+
+function login(){
+let role=document.getElementById("role").value;
+let dash=document.getElementById("dashboard");
+dash.style.display="block";
+
+if(role==="customer"){
+document.getElementById("dashTitle").innerText="Customer Dashboard";
+document.getElementById("interface").innerHTML=
+"<p>Browse Products • Chat With Sellers • Track Orders</p>";
+}
+else{
+document.getElementById("dashTitle").innerText="Seller Dashboard";
+document.getElementById("interface").innerHTML=
+"<p>Manage Listings • Chat With Customers • Handle Orders</p>";
+}
+
+dash.scrollIntoView();
+}
+
+function sendMessage(){
+let input=document.getElementById("chatInput");
+let box=document.getElementById("chatBox");
+
+if(input.value.trim()!==""){
+box.innerHTML+="<p>"+input.value+"</p>";
+input.value="";
+box.scrollTop=box.scrollHeight;
+}
+}
+
+</script>
+
+</body>
+</html>
